@@ -47,8 +47,8 @@
     </div>
     <div id="footer">
       <ul class="left">
-        <li>
-          {% if login_link %}
+        {% if login_link %}
+          <li>
             <a href="{{ login_link }}">
               {% if user %}
                 Salir
@@ -56,9 +56,9 @@
                 Entrar
               {% endif %}
             </a>
-          {% endif %}
-        </li>
-        <li>-</li>
+          </li>
+          <li>-</li>
+        {% endif %}
         <li>Copyright (c) {% now "Y" %} <a href="http://www.dstant.com">dStant.com</a></li>
        <li>-</li>
        <li id="icons">Icons by <a href="http://p.yusukekamiyamane.com/">Yusuke Kamiyamane</a></li>
