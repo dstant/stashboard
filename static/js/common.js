@@ -38,10 +38,10 @@ stashboard.rfc1123 = function(date){
     } else {
         off = "-";
     }
-  
+
     if (hours < 10) {
         off += "0";
-    } 
+    }
     off += hours.toString();
 
     if (minutes < 10) {
@@ -70,7 +70,7 @@ stashboard.fillLegend = function(isAdmin) {
 
             $("<td />", {"class": "level", text: data.level}).appendTo(tr);
             $("<td />", {html: edit}).appendTo(tr);
-            $("<td />", {html: 
+            $("<td />", {html:
                 $("<a />", {text: "Delete", href: data.url, "class": "delete-status"})
             }).appendTo(tr);
 
@@ -96,25 +96,25 @@ stashboard.fillLegend = function(isAdmin) {
                     modal: true,
                     buttons: {
                         'Save': function(){
-                            $.ajax({ 
+                            $.ajax({
                                 type: "POST",
                                 url: a.attr("href"),
-                                data: { 
-                                    name: $("#status-name").val(), 
+                                data: {
+                                    name: $("#status-name").val(),
                                     description: $("#status-description").val(),
                                     image: $("input[name=status-image]:checked").val(),
                                     level: $("#statusLevel").val()
                                 },
-                                dataType: 'json', 
+                                dataType: 'json',
                                 context: tr,
-                                success: function(data){ 
+                                success: function(data){
                                     $("#add-status-modal").dialog('close');
                                     this.children(".description").text(data.description);
                                     this.children(".level").text(data.level);
                                     this.children(".icon").children("img").attr("alt", data.name);
                                     this.children(".icon").children("img").attr("src", data.image);
                                 },
-                                error: function(){ 
+                                error: function(){
                                     $("#add-status-modal").dialog('close');
                                     stashboard.error("Could not save status");
                                 }
@@ -139,11 +139,11 @@ stashboard.fillLegend = function(isAdmin) {
     });
 
 
-    $.ajax({ 
+    $.ajax({
         type: "GET",
         url: "/api/v1/statuses",
-        dataType: 'json', 
-        success: function(data){ 
+        dataType: 'json',
+        success: function(data){
 
             if (data){
                 var statuses = data.statuses;
@@ -185,22 +185,22 @@ stashboard.fillLegend = function(isAdmin) {
           autoOpen: false,
           buttons: {
               'Create Status': function(){
-                  $.ajax({ 
+                  $.ajax({
                       type: "POST",
                       url: "/api/v1/statuses",
-                      data: { 
-                          name: $("#status-name").val(), 
+                      data: {
+                          name: $("#status-name").val(),
                           description: $("#status-description").val(),
                           image: $("input[name=status-image]:checked").val(),
                           level: $("#statusLevel").val()
                       },
-                      dataType: 'json', 
-                      context: $(".legend").children('tbody'), 
-                      success: function(data){ 
+                      dataType: 'json',
+                      context: $(".legend").children('tbody'),
+                      success: function(data){
                           $("#add-status-modal").dialog('close');
                           createStatusRow(data);
                       },
-                      error: function(){ 
+                      error: function(){
                           $("#add-status-modal").dialog('close');
                           stashboard.error("Could not create new status due to missing information");
                       }
@@ -221,7 +221,7 @@ stashboard.fillLegend = function(isAdmin) {
               modal: true,
               buttons: {
                   'Delete Status': function(){
-                      $.ajax({ 
+                      $.ajax({
                           type: "DELETE",
                           url: a.attr("href"),
                           dataType: 'json',
@@ -233,7 +233,7 @@ stashboard.fillLegend = function(isAdmin) {
                           error: function(){
                               this.dialog('close');
                               stashboard.error("Unable to delete status");
-                          }	      
+                          }
                       });
                   },
                   'Cancel': function(){
@@ -274,7 +274,7 @@ stashboard.fillIndex = function() {
         if (fetchStatuses) {
             imageRow = informationImage;
         }
-        
+
         $('<td />', {"class": "status highlight"}).append(
             $('<a />', {
                 href: 'services/' + data.id,
@@ -294,30 +294,30 @@ stashboard.fillIndex = function() {
             ).appendTo(tr);
         }
 
-        $("#service-list").fadeIn('fast', function(){    
+        $("#service-list").fadeIn('fast', function(){
             $("#services-body").append(tr);
         });
 
         if (fetchStatuses){
 
-            $.ajax({ 
+            $.ajax({
                 type: "GET",
                 url: "/api/v1/services/" + data.id + "/events/current",
-                dataType: 'json', 
-                success: function(evt){ 
+                dataType: 'json',
+                success: function(evt){
                     $("#" + data.id + " td.highlight img")
                         .attr("src", evt.status.image);
 
                     if (evt.informational) {
                         $("#" + data.id + " td.highlight a").append(
                             $("<img />", {
-                                src: "/images/small-information.png", 
+                                src: "/images/small-information.png",
                                 "class": "information"
                             })
                         );
                     }
                 },
-                error: function(evt){ 
+                error: function(evt){
                     $("#" + data.id + " td.highlight img")
                         .attr("src", defaultImage);
                 }
@@ -335,11 +335,11 @@ stashboard.fillIndex = function() {
             url += "?start=" + stashboard.rfc1123(startDate);
             url += "&end=" + stashboard.rfc1123(endDate);
 
-            $.ajax({ 
+            $.ajax({
                 type: "GET",
                 url: url,
-                dataType: 'json', 
-                success: function(results){ 
+                dataType: 'json',
+                success: function(results){
                     var calendar = {};
                     var days = [];
 
@@ -376,18 +376,18 @@ stashboard.fillIndex = function() {
                     }
 
                 },
-                error: function(){ 
+                error: function(){
 
                 }
             });
         }
     };
 
-    $.ajax({ 
+    $.ajax({
         type: "GET",
         url: "/api/v1/services",
-        dataType: 'json', 
-        success: function(data){ 
+        dataType: 'json',
+        success: function(data){
 
             var services = data.services;
 
@@ -428,20 +428,20 @@ stashboard.fillIndex = function() {
         autoOpen: false,
         buttons: {
             'Create Service': function(){
-                $.ajax({ 
+                $.ajax({
                     type: "POST",
                     url: "/api/v1/services",
-                    data: { 
-                        name: $("#service-name").val(), 
+                    data: {
+                        name: $("#service-name").val(),
                         description: $("#service-description").val()
                     },
-                    dataType: 'json', 
-                    context: $("#service-list"), 
-                    success: function(data){ 
+                    dataType: 'json',
+                    context: $("#service-list"),
+                    success: function(data){
                         $("#add-service-modal").dialog('close');
                         createServiceRow(data, false);
                     },
-                    error: function(evt){ 
+                    error: function(evt){
                         $("#add-service-modal").dialog('close');
                         stashboard.error("Could not create service. Make sure Name and Description are valid");
                     }
@@ -460,7 +460,7 @@ stashboard.fillService = function(serviceName, isAdmin, start_date, end_date) {
         var d = new Date(data.timestamp);
         var time = $.datepicker.formatDate("MM d, ", d);
         var hour;
-        var period; 
+        var period;
 
         if (d.getHours() < 12) {
             if (d.getHours() === 0) {
@@ -478,7 +478,7 @@ stashboard.fillService = function(serviceName, isAdmin, start_date, end_date) {
         }
 
         if (d.getMinutes() < 10) {
-            time += hour + ":0" + d.getMinutes() + period; 
+            time += hour + ":0" + d.getMinutes() + period;
         } else {
             time += hour + ":" + d.getMinutes() + period;
         }
@@ -495,7 +495,7 @@ stashboard.fillService = function(serviceName, isAdmin, start_date, end_date) {
 
         $('<td />', {"class": "status highlight"}).append(
             $('<img />', {
-                src: image, 
+                src: image,
                 alt: data.status.name
             })
         ).appendTo(tr);
@@ -555,7 +555,7 @@ stashboard.fillService = function(serviceName, isAdmin, start_date, end_date) {
                     },
                     error: function(){}
                 });
-                
+
             };
 
             eventsURL = "/api/v1/services/" + service.id + "/events";
@@ -567,11 +567,11 @@ stashboard.fillService = function(serviceName, isAdmin, start_date, end_date) {
                 eventsURL += "&end=" + end;
             }
 
-            $.ajax({ 
+            $.ajax({
                 type: "GET",
                 url: eventsURL,
                 dataType: "json",
-                context: $(".event-log").children('tbody'), 
+                context: $(".event-log").children('tbody'),
                 success: function(data){
 
                     var events = data.events;
@@ -581,7 +581,7 @@ stashboard.fillService = function(serviceName, isAdmin, start_date, end_date) {
                         populatStatuses(events[0].status.name);
                         for (var i=0; i < length; i++) {
                             var tr = createRow(events[i]);
-                            $(this).append(tr);  
+                            $(this).append(tr);
                         }
                     } else {
                         populatStatuses();
@@ -598,12 +598,12 @@ stashboard.fillService = function(serviceName, isAdmin, start_date, end_date) {
                     modal: true,
                     buttons: {
                         'Delete Service': function(){
-                            $.ajax({ 
+                            $.ajax({
                                 type: "DELETE",
                                 url: "/api/v1/services/" + service.id,
-                                dataType: 'json', 
+                                dataType: 'json',
                                 success: function(data){
-                                    location.replace("/");  
+                                    location.replace("/");
                                 }
                             });
                         },
@@ -623,7 +623,7 @@ stashboard.fillService = function(serviceName, isAdmin, start_date, end_date) {
                     modal: true,
                     buttons: {
                         'Update Status': function(){
-                            $.ajax({ 
+                            $.ajax({
                                 type: "POST",
                                 url: "/api/v1/services/" + service.id + "/events",
                                 data: {
@@ -631,7 +631,7 @@ stashboard.fillService = function(serviceName, isAdmin, start_date, end_date) {
                                     message: $("#eventMessage").val()
                                 },
                                 dataType: "json",
-                                context:$("#add-event-modal"), 
+                                context:$("#add-event-modal"),
                                 success: function(data){
                                     this.dialog('close');
                                     var tr = createRow(data);
@@ -659,7 +659,7 @@ stashboard.fillService = function(serviceName, isAdmin, start_date, end_date) {
                     modal: true,
                     buttons: {
                         'Add Note': function(){
-                            $.ajax({ 
+                            $.ajax({
                                 type: "POST",
                                 url: "/api/v1/services/" + service.id + "/events",
                                 data: {
@@ -667,7 +667,7 @@ stashboard.fillService = function(serviceName, isAdmin, start_date, end_date) {
                                     informational: "true"
                                 },
                                 dataType: "json",
-                                context:$("#add-note-modal"), 
+                                context:$("#add-note-modal"),
                                 success: function(data){
                                     this.dialog('close');
                                     var tr = createRow(data);
@@ -699,22 +699,22 @@ stashboard.fillService = function(serviceName, isAdmin, start_date, end_date) {
                     modal: true,
                     buttons: {
                         'Edit Service': function(){
-                            $.ajax({ 
+                            $.ajax({
                                 type: "POST",
                                 url: "/api/v1/services/" + service.id,
-                                data: { 
-                                    name: $("#service-name").val(), 
+                                data: {
+                                    name: $("#service-name").val(),
                                     description: $("#service-description").val()
                                 },
-                                dataType: 'json', 
-                                success: function(data){ 
+                                dataType: 'json',
+                                success: function(data){
                                     $("#edit-service-modal").dialog('close');
                                     $("#serviceDescription").text(data.description);
                                     $("h2 span").text(data.name);
                                     $("#service-name").val(data.name);
                                     $("#service-description").val(data.description);
                                 },
-                                error: function(evt){ 
+                                error: function(evt){
                                     $("#edit-service-modal").dialog('close');
                                     stashboard.error("Could not create edit service information");
                                 }
@@ -734,11 +734,11 @@ stashboard.fillService = function(serviceName, isAdmin, start_date, end_date) {
 
     $("td.delete a").live('click', function(e){
         e.preventDefault();
-        $.ajax({ 
+        $.ajax({
             type: "DELETE",
             data: {},
-            url: $(this).attr("href"), 
-            context: $(this).parent().parent(), 
+            url: $(this).attr("href"),
+            context: $(this).parent().parent(),
             success: function(){
                 $(this).fadeOut('fast', function(){
                     $(this).remove();
@@ -750,4 +750,4 @@ stashboard.fillService = function(serviceName, isAdmin, start_date, end_date) {
         });
     });
 };
-  
+
