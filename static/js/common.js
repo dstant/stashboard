@@ -24,7 +24,13 @@ stashboard.info = function(message){
 };
 
 stashboard.rfc1123 = function(date){
+    // quick hack for I18n support... switch to en to get rfc1123 and then
+    // switch back to current
+	  $.datepicker.setDefaults($.datepicker.regional['']);
+
     var rfc = $.datepicker.formatDate("D, d M yy", date);
+
+	  $.datepicker.setDefaults($.datepicker.regional['es']);
     rfc = rfc + " " + date.getHours() + ":";
     rfc = rfc + date.getMinutes() + ":" + date.getSeconds();
     var offset = date.getTimezoneOffset();
@@ -253,7 +259,7 @@ stashboard.fillIndex = function() {
     for (var i=0; i < 5; i++) {
         $("<th />", {
             "class": "date",
-            text: d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear()
+            text: $.datepicker.formatDate("dd/mm/yy", d)
         }).appendTo(thead);
         d = new Date(d.getTime() - 86400000);
     }
