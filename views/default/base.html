@@ -23,6 +23,7 @@
     {% endblock %}
   </head>
   <body>
+  <div id="web">
     <div id="wrapper">
       <div id="header">
 	<div id="notice"><span></span><a href="#">X</a></div>
@@ -34,13 +35,15 @@
 
         {% endblock %}
       </div>
-      <div id="push"></div>
+      
       <div id="footer-twitter">
         <p>
           <img alt="Portada"  src="/images/twitter.png" />
           <a href="http://twitter.com/dstant" target="_blank" class="underline">S&iacute;guenos en twitter</a> para conocer m&aacute;s detalles.
         </p>
       </div>
+      <div id="push"></div>
+      
     </div>
     <div id="footer">
       <ul class="left">
@@ -66,7 +69,8 @@
     </div>
     {% block js_end %}
     {% endblock %}
-    <script type="text/javascript" src="/js/prettify.js"></script>
+    <script type="text/javascript" src="/js/prettify.js"></script>    
+  </div>
   </body>
 </html>
 

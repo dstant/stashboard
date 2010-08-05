@@ -1,11 +1,16 @@
-html, body{height: 100%;}
-body{border-top: 5px solid #b9d200; font:12px arial,helvetica,verdana,sans-serif;background: rgb(247, 247, 247);}
-
+html, body{
+  height: 99%;
+}
+body{ font:12px arial,helvetica,verdana,sans-serif;background: rgb(247, 247, 247);}
+#web {
+  border-top: 5px solid #b9d200;
+  height: 100%;
+}
 a{color:#333;text-decoration:none;}
 a:hover{color:#666;}
 
 #wrapper { width: 900px; min-height: 100%;
-           height: auto !important; height: 100%; margin: 0 auto 0;
+           height: auto !important; height: 100%; margin: 0 auto -4em;
          }
          
 h1 {font-size: 32px;}
@@ -107,7 +112,7 @@ h3.date-range {color: #999; margin-top: 20px}
 
 
 #footer, #push {height: 3em;}
-#footer {padding: 0 30px; width: 900px; margin: auto;}
+#footer {padding: 0 30px; width: 900px; margin: auto; }
 #footer ul {padding: 10px 0px;}
 #footer ul.left { float: left;}
 #footer ul.right { float: right;}
@@ -212,7 +217,7 @@ td.status a .information {position: absolute; top: 0px; left: 1px; z-index: 500;
 
 #footer-twitter {
   text-align: center;
-  height: 3em;
+  height: 5em;
 }
 #footer-twitter img {
   margin-bottom: -15px;
