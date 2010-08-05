@@ -332,11 +332,17 @@ stashboard.fillIndex = function() {
             var rightNow = new Date();
             rightNow.setHours(0);
             rightNow.setMinutes(0);
-	    rightNow.setSeconds(0);
+	          rightNow.setSeconds(0);
             rightNow.setMilliseconds(0);
 
-            var endDate = new Date(rightNow.getTime());
-            var startDate = new Date(endDate.getTime() - 86400000 * 5);
+            var yesterday = new Date(rightNow.getTime() - 86400000);
+            yesterday.setHours(23);
+            yesterday.setMinutes(59);
+	          yesterday.setSeconds(59);
+            yesterday.setMilliseconds(999);
+
+            var endDate = new Date(yesterday.getTime());
+            var startDate = new Date(rightNow.getTime() - 86400000 * 5);
             var url = "/api/v1/services/" + data.id + "/events";
             url += "?start=" + stashboard.rfc1123(startDate);
             url += "&end=" + stashboard.rfc1123(endDate);
