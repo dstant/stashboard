@@ -34,7 +34,7 @@ stashboard.rfc1123 = function(date){
 
     if (offset < 0) {
         off = "+";
-	hours = -hours;
+	      hours = -hours;
     } else {
         off = "-";
     }
