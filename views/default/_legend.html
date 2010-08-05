@@ -12,32 +12,32 @@
       </tr>
     </thead>
     {% endif %}
-    
+
     <tbody id="legend-body">
     </tbody>
   </table>
-  
+
   {% if user_is_admin %}
-    <a id="add-status" class="button" href="#">A&ntilde;adir nuevo status</a>
-    
+    <a id="add-status" class="button" href="#">A&ntilde;adir nuevo estado</a>
+
     <div id="add-status-modal" class="dialog" title="A&ntilde;adir nuevo status">
       <label class="side-label" for="status-name">Nombre</label>
       <input type="text" id="status-name"name="status-name">
-      
+
       <label class="side-label" for="status-level">Nivel</label>
       <select id="statusLevel" class="status-level" name="level">
       </select>
-      
+
       <label for="status-image">Icono</label>
       {% for image_row in common_statuses %}
         <div>
         {% for image in image_row %}
-        
+
         <input type="radio" name="status-image" value="{{ image }}">
         <img src="/images/status/{{ image }}.png" />
         {% endfor %}
         </div>
-        
+
       {% endfor %}
 
       <label for="status-description">Descripci&oacute;n</label>
@@ -46,11 +46,11 @@
     </div>
 
     <div class="dialog" id="delete-status-modal" title="Delete Status">
-      <p>¿Seguro que quieres borrar este status? Todos los eventos de este status ser&aacute;n borrados.</p>
+      <p>¿Seguro que quieres borrar este status? Todos los eventos de este estado ser&aacute;n borrados.</p>
     </div>
 
   {% endif %}
-  
+
   <script type="text/javascript">
     $(document).ready(function(){
       {% if user_is_admin %}
@@ -61,3 +61,4 @@
     });
   </script>
 </div>
+
