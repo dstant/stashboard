@@ -15,8 +15,8 @@
           <table id="service-list">
             <thead>
               <tr>
-                <th>Service</th>
-                <th class="today">Current</th>
+                <th>Servicio</th>
+                <th class="today">Hoy</th>
             </thead>
 
             <tbody id="services-body">
@@ -24,7 +24,7 @@
           </table>
         
         {% if user_is_admin %}
-          <a id="add-service" class="button" href="#">Add New Service</a>
+          <a id="add-service" class="button" href="#">A&ntilde;adir nuevo servicio</a>
         {% endif %}
         
         {% include "_legend.html" %}
@@ -34,9 +34,9 @@
       {% if user_is_admin %}
       
       <div class="dialog" id="add-service-modal" title="Add New Service">
-        <label  for="service-name">Name</label>
+        <label  for="service-name">Nombre</label>
         <input type="text" id="service-name"name="service-name">
-        <label for="service-description">Description</label>
+        <label for="service-description">Descripci&oacute;n</label>
         <textarea
           id="service-description" name="service-description"></textarea>
       </div>

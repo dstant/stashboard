@@ -253,7 +253,7 @@ stashboard.fillIndex = function() {
     for (var i=0; i < 5; i++) {
         $("<th />", {
             "class": "date",
-            text: (d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear()
+            text: d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear()
         }).appendTo(thead);
         d = new Date(d.getTime() - 86400000);
     }
@@ -458,7 +458,7 @@ stashboard.fillIndex = function() {
 stashboard.fillService = function(serviceName, isAdmin, start_date, end_date) {
     var createRow = function(data) {
         var d = new Date(data.timestamp);
-        var time = $.datepicker.formatDate("MM d, ", d);
+        var time = $.datepicker.formatDate("d MM, ", d);
         var hour;
         var period; 
 

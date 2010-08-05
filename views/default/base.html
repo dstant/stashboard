@@ -26,8 +26,8 @@ src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></sc
     <div id="wrapper">
       <div id="header">
 	<div id="notice"><span></span><a href="#">X</a></div>
-        <img id="logo" src="/images/logo.png" alt="Logo"/>
-        <a href="/"><h1 id="title">{{ title }}</h1></a>
+        <a href="/"><img id="logo" src="/images/logo-dstant.jpg" alt="Logo"/></a>
+        <!-- <h1 id="title">{{ title }}</h1></a> -->
       </div>
       <div id="content">
         {% block content %}
@@ -35,6 +35,11 @@ src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></sc
         {% endblock %}
       </div>
       <div id="push"></div>
+
+        <p class="twitter">
+          <img alt="Portada"  src="http://assets0.dstant.com/images/twitter.png" />
+          <a href="http://twitter.com/dstant" target="_blank" class="underline">S&iacute;guenos en twitter</a> para conocer m&aacute;s detalles.
+        </p>
     </div>
     <div id="footer">
       <ul class="left">
@@ -42,21 +47,15 @@ src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></sc
           {% if login_link %}
             <a href="{{ login_link }}">
               {% if user %}
-                Logout
+                Salir
               {% else %}
-                Login
+                Entrar
               {% endif %}
             </a>
           {% endif %}
         </li>
-	<li>-</li>
-	<li>
-	  <a href="/documentation/overview">
-            API Documentation
-          </a>
-	</li>
         <li>-</li>
-        <li>Copyright (c) {% now "Y" %} <a href="http://www.twilio.com">Twilio Inc.</a></li>
+        <li>Copyright (c) {% now "Y" %} <a href="http://www.dstant.com">dStant.com</a></li>
        <li>-</li>
        <li id="icons">Icons by <a href="http://p.yusukekamiyamane.com/">Yusuke Kamiyamane</a></li>
       </ul>

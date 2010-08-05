@@ -28,10 +28,10 @@
         
         {% if user_is_admin %}
           <a class="button" id="update-status">
-	    Update Status
+	    Actualizar status
           </a>
           <a class="button" id="add-note">
-	    Add Note
+	    A&ntilde;adir nota
           </a>
 
 
@@ -50,11 +50,11 @@
         <table class="event-log" cellpadding="10">
           <thead>
             <tr>
-              <th class="time-header">Time</th>
+              <th class="time-header">Tiempo</th>
               <th class="status-header">Status</th>
-              <th>Message</th>
+              <th>Mensaje</th>
               {% if user_is_admin %}
-                <th class="delete-header">Delete</th>
+                <th class="delete-header">Borrar</th>
               {% endif %}
             </tr>
           </thead>
@@ -64,10 +64,10 @@
 
         {% if user_is_admin %}
           <a class="button" id="delete-service">
-            Delete Service
+            Borrar servicio
           </a>
           <a class="button" id="edit-service">
-            Edit Service
+            Editar servicio
           </a>
         {% endif %}
 
@@ -77,25 +77,25 @@
       {% if user_is_admin %}
       
       <div class="dialog" id="delete-service-modal" title="Delete Service">
-        <p>Are you sure you want to delete this service?</p>
+        <p>¿Estas seguro que quieres borrar este servicio?</p>
       </div>
 
       <div class="dialog" id="add-note-modal" title="Add Note">
-	<label id="messageLabel" for="message">Message:</label>
+	<label id="messageLabel" for="message">Mensaje:</label>
 	<textarea id="noteMessage" class="update-message" name="message"></textarea>
       </div>
 
       <div class="dialog" id="add-event-modal" title="Update Status">
 	<label id="statusLabel" for="status">Status:</label>
 	<select id="statusValue" class="update-status" name="severity"></select>
-	<label id="messageLabel" for="message">Message:</label>
+	<label id="messageLabel" for="message">Mensaje:</label>
 	<textarea id="eventMessage" class="update-message" name="message"></textarea>
       </div>
 
       <div class="dialog" id="edit-service-modal" title="Edit Service">
-        <label  for="service-name">Name</label>
+        <label  for="service-name">Nombre</label>
         <input type="text" id="service-name" name="service-name">
-        <label for="service-description">Description</label>
+        <label for="service-description">Descripci&oacute;n</label>
         <textarea
           id="service-description" name="service-description"></textarea>
       </div>
