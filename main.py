@@ -83,8 +83,6 @@ ROUTES = [
 #    (r'/documentation/(.+)', site.DocumentationHandler),
 
     ('/.*$', site.NotFoundHandler),
-
-
 ]
 
 def main():
