@@ -1,4 +1,4 @@
-application: stashboard
+application: dstant-service-status
 version: 1
 runtime: python
 api_version: 1
@@ -24,7 +24,7 @@ handlers:
 
 - url: /js
   static_dir: static/js
-  
+
 - url: /widget
   static_dir: static/widget
 
@@ -35,7 +35,7 @@ handlers:
 - url: /robots\.txt
   static_files: static/robots.txt
   upload: static/robots.txt
-  
+
 - url: .*
   script: main.py
   secure: optional
@@ -54,3 +54,4 @@ skip_files: |
  (license\.txt)|
  (setup.py)
  )$
+
