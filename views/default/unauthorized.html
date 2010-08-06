@@ -9,12 +9,13 @@
                 <p>Disculpa. Est&aacute;s tratando de acceder a una pagina sin tener autorizaci&oacute;n.</p>
                 {% if user %}
                 <p>Estas identificado como {{ user.email }}, y esta cuenta no tiene privilegios para acceder a esta informaci&oacute;n.</p>
-                <p>Si cree que es un error, prueba <a href="{{ logout_url }}">a salir</a> y despu&eacute;s
+                <p>Si crees que es un error, prueba <a href="{{ logout_url }}">a salir</a> y despu&eacute;s
                     <a href="{{ login_url }}">entrar</a> otra vez.</p>
                 {% else %}
-                <p>Deber&iacute;as probar de hacer <a href="{{ login_url }}">login</a> con tu cuenta de google si crees que fa a funcionar.</p>
+                <p>Deber&iacute;as probar de hacer <a href="{{ login_url }}">login</a> con tu cuenta de google si crees que va a funcionar.</p>
                 {% endif %}
             </div>
         </div>
     </div>
 {% endblock %}
+
